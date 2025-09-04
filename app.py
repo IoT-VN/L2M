@@ -153,15 +153,20 @@ class BossTracker:
     # (same logic, only text changed)
 
 # --- Main Program (direct load Leona09) ---
+# --- Main Program (direct load Leona09) ---
 if 'boss_trackers' not in st.session_state:
     st.session_state.boss_trackers = {}
 
-group_name = "Leona09"
+# Force select Leona09
+st.session_state.selected_group = "Leona09"
+
+group_name = st.session_state.selected_group
 group_config = GROUPS[group_name]
 
+# Initialize tracker if not exist
 if group_name not in st.session_state.boss_trackers:
     st.session_state.boss_trackers[group_name] = BossTracker(group_config['file_prefix'])
 
-# Show the tracker page directly
-# Make sure show_boss_tracker() function above is also translated to English UI
+# Now call the function (already defined above in your code)
 show_boss_tracker(group_name, group_config)
+
