@@ -6,7 +6,7 @@ import pandas as pd
 import pytz
 
 # 設定台灣時區
-TW_TZ = pytz.timezone('Asia/Taipei')
+TW_TZ = pytz.timezone('Asia/Ho_Chi_Minh')
 
 def get_taiwan_time():
     """獲取台灣時間"""
@@ -14,23 +14,15 @@ def get_taiwan_time():
 
 # 頁面配置
 st.set_page_config(
-    page_title="🐉 天堂2M - 多群組BOSS追蹤器",
-    page_icon="🐉",
+    page_title="Lineage 2M - Boss Tracker",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
 # 群組配置
 GROUPS = {
-    "艾瑞卡1": {"icon": "⚔️", "color": "#e74c3c", "file_prefix": "erika1"},
-    "艾瑞卡2": {"icon": "🛡️", "color": "#3498db", "file_prefix": "erika2"},
-    "艾瑞卡3": {"icon": "🏹", "color": "#2ecc71", "file_prefix": "erika3"},
-    "艾瑞卡4": {"icon": "🗡️", "color": "#f39c12", "file_prefix": "erika4"},
-    "艾瑞卡5": {"icon": "🔮", "color": "#9b59b6", "file_prefix": "erika5"},
-    "艾瑞卡6": {"icon": "⚡", "color": "#e67e22", "file_prefix": "erika6"},
-    "黎歐納5": {"icon": "🌟", "color": "#16a085", "file_prefix": "leonard5"},
-    "猛龍一盟": {"icon": "🐉", "color": "#c0392b", "file_prefix": "dragon1"},
-    "猛龍二盟": {"icon": "🔥", "color": "#8e44ad", "file_prefix": "dragon2"},
+    "L9": {"icon": "⚔️", "color": "#e74c3c", "file_prefix": "Leona09"},
 }
 
 # CSS 樣式
