@@ -14,7 +14,7 @@ def get_vn_time():
 
 # Page configuration
 st.set_page_config(
-    page_title="Lineage 2M - Boss Tracker",
+    page_title="Boss Tracker",
     page_icon="⚔️",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -154,19 +154,16 @@ class BossTracker:
 
 # --- Main Program (direct load Leona09) ---
 # --- Main Program (direct load Leona09) ---
+# --- Main Program (always load Leona09) ---
 if 'boss_trackers' not in st.session_state:
     st.session_state.boss_trackers = {}
 
-# Force select Leona09
 st.session_state.selected_group = "Leona09"
-
-group_name = st.session_state.selected_group
+group_name = "Leona09"
 group_config = GROUPS[group_name]
 
-# Initialize tracker if not exist
 if group_name not in st.session_state.boss_trackers:
     st.session_state.boss_trackers[group_name] = BossTracker(group_config['file_prefix'])
 
-# Now call the function (already defined above in your code)
 show_boss_tracker(group_name, group_config)
 
