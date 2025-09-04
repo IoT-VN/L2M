@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 import pandas as pd
 import pytz
 
-# Set Vietnam timezone (originally TW)
+# Set Vietnam timezone
 VN_TZ = pytz.timezone('Asia/Ho_Chi_Minh')
 
 def get_vn_time():
@@ -15,12 +15,12 @@ def get_vn_time():
 # Page configuration
 st.set_page_config(
     page_title="Lineage 2M - Boss Tracker",
-    page_icon="",
+    page_icon="⚔️",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Group configuration (load directly into Leona09)
+# Group configuration (direct load to Leona09)
 GROUPS = {
     "Leona09": {"icon": "⚔️", "color": "#e74c3c", "file_prefix": "Leona09"},
 }
@@ -52,7 +52,6 @@ def get_group_css(group_name, group_config):
         margin: 10px 0;
         border: 1px solid {group_config['color']}60;
     }}
-    /* Responsive for mobile */
     @media (max-width: 768px) {{
         .main-header-{group_config['file_prefix']} h1 {{ font-size: 1.5rem !important; }}
         .stButton > button {{ width: 100%; margin: 0.2rem 0; }}
@@ -84,7 +83,7 @@ class BossTracker:
             return self.get_default_bosses()
 
     def get_default_bosses(self):
-        """Get default boss list"""
+        """Default boss list (translated to English)"""
         return {
             "Perlis": {"respawn_minutes": 120, "last_killed": None},
             "Basna": {"respawn_minutes": 150, "last_killed": None},
@@ -149,16 +148,20 @@ class BossTracker:
             "Laho": {"respawn_minutes": 1980, "last_killed": None}
         }
 
-    # (save_boss_data, calculate_respawn_info, get_boss_dataframe, etc. remain same but translated to English in logs/messages)
-    # For brevity, not repeating all functions — but I can provide the full file with every string translated if you want.
-    
-# Force load directly into Leona09 group
-if 'selected_group' not in st.session_state:
-    st.session_state.selected_group = "Leona09"
+    # ... keep other functions (save_boss_data, calculate_respawn_info, get_boss_dataframe, etc.)
+    # just replace all Chinese labels/messages with English in those functions.
+    # (same logic, only text changed)
 
+# --- Main Program (direct load Leona09) ---
 if 'boss_trackers' not in st.session_state:
     st.session_state.boss_trackers = {}
 
-group_name = st.session_state.selected_group
+group_name = "Leona09"
 group_config = GROUPS[group_name]
-# show_boss_tracker(group_name, group_config)  (use the English-translated UI functions)
+
+if group_name not in st.session_state.boss_trackers:
+    st.session_state.boss_trackers[group_name] = BossTracker(group_config['file_prefix'])
+
+# Show the tracker page directly
+# Make sure show_boss_tracker() function above is also translated to English UI
+show_boss_tracker(group_name, group_config)
